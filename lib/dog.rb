@@ -32,6 +32,10 @@ class Dog
     row.size > 0 ? self.create_from_database(row.first) : nil
   end
 
+  def self.find_or_create_by(name:, :breed)
+    binding.pry
+  end
+
   def self.create_from_database(row)
     dog = self.new(id:row[0], name:row[1], breed:row[2])
   end
