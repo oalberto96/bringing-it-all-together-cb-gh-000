@@ -61,7 +61,6 @@ class Dog
     WHERE name = ?
     SQL
     result = DB[:conn].execute(sql, name)
-    binding.pry
     result.size > 0 ? self.new_from_db(result.first) : nil
   end
 
