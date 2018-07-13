@@ -33,12 +33,13 @@ class Dog
   end
 
   def self.find_or_create_by(name:, breed:)
-    self.find_by_attributes(name:name, breed:breed)
+    dog = self.find_by_attributes(name:name, breed:breed)
+    dog != nil ? dog : self.create(name:name, breed:breed)
   end
 
   def self.find_by_attributes(name:, breed:)
     sql = <<-SQL
-    SELECT * FROM dogs 
+    SELECT * FROM dogs
     WHERE name = ? and breed = ?
     SQL
     result = DB[:conn].execute(sql, name, breed)
