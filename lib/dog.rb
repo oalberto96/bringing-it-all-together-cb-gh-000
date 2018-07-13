@@ -33,7 +33,8 @@ class Dog
   end
 
   def self.create_from_database(row)
-    self.new(id:row[0], name:row[1], name:row[2])
+    dog = self.new(id:row[0], name:row[1], name:row[2])
+    binding.pry
   end
 
   def self.create_table
