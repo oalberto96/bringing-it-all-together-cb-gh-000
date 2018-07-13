@@ -19,7 +19,12 @@ class Dog
   end
 
   def update
-    binding.pry
+    sql = <<-SQL
+    UPDATE dogs
+    SET name = ?, breed = ? 
+    WHERE id = ?
+    SQL
+    DB[:conn].execute(sql)
   end
 
   def self.create(attributes)
