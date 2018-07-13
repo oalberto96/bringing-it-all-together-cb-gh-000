@@ -18,8 +18,9 @@ class Dog
     end
   end
 
-  def self.create(name:,breed:)
-    binding.pry
+  def self.create(attributes)
+    dog = self.new(attributes)
+    dog.save
   end
 
   def self.create_table
