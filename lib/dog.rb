@@ -28,6 +28,7 @@ class Dog
     SELECT * FROM dogs
     WHERE dogs.id = ?
     SQL
+    binding.pry
     row = DB[:conn].execute(sql,id)
     self.create_from_database(row.first)
   end
