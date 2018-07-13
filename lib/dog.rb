@@ -33,7 +33,16 @@ class Dog
   end
 
   def self.find_or_create_by(name:, breed:)
-    binding.pry
+    self.find_by_attributes(name:name, breed:breed)
+  end
+
+  def self.find_by_attributes(name:, breed:)
+    sql = <<-SQL
+    SELECT * FROM dogs 
+    WHERE name = ? and breed = ?
+    SQL
+    result = DB[:conn].execute(sql, name, breed)
+    result.size > 0 ? self.create_from_database(result.first) : nil
   end
 
   def self.create_from_database(row)
