@@ -30,7 +30,7 @@ class Dog
     SQL
     binding.pry
     row = DB[:conn].execute(sql,id)
-    self.create_from_database(row.first)
+    row.size > 0 ? self.create_from_database(row.first) : nil
   end
 
   def self.create_from_database(row)
