@@ -24,7 +24,7 @@ class Dog
     SET name = ?, breed = ?
     WHERE id = ?
     SQL
-    DB[:conn].execute(sql)
+    DB[:conn].execute(sql, [@name, @breed, @id])
   end
 
   def self.create(attributes)
