@@ -51,7 +51,7 @@ class Dog
     SELECT * FROM dogs
     WHERE name = ?
     SQL
-    result = DB[:conn].execute(sql, name, breed)
+    result = DB[:conn].execute(sql, name)
     result.size > 0 ? self.new_from_db(result.first) : nil
   end
 
