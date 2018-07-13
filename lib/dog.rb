@@ -29,7 +29,7 @@ class Dog
     WHERE dogs.id = ?
     SQL
     row = DB[:conn].execute(sql,id)
-    row.size > 0 ? self.create_from_database(row.first) : nil
+    row.size > 0 ? self.new_from_db(row.first) : nil
   end
 
   def self.find_or_create_by(name:, breed:)
@@ -43,10 +43,10 @@ class Dog
     WHERE name = ? and breed = ?
     SQL
     result = DB[:conn].execute(sql, name, breed)
-    result.size > 0 ? self.create_from_database(result.first) : nil
+    result.size > 0 ? self.new_from_db(result.first) : nil
   end
 
-  def self.create_from_database(row)
+  def self.new_from_db(row)
     dog = self.new(id:row[0], name:row[1], breed:row[2])
   end
 
