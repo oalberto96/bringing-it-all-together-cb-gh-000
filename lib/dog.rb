@@ -21,7 +21,7 @@ class Dog
   def update
     sql = <<-SQL
     UPDATE dogs
-    SET name = ?, breed = ? 
+    SET name = ?, breed = ?
     WHERE id = ?
     SQL
     DB[:conn].execute(sql)
@@ -67,6 +67,9 @@ class Dog
 
   def self.new_from_db(row)
     dog = self.new(id:row[0], name:row[1], breed:row[2])
+    if row[1] = "Teddy Jr."
+      binding.pry
+    end
   end
 
   def self.create_table
