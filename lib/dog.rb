@@ -18,6 +18,9 @@ class Dog
     end
   end
 
+  def update
+  end
+
   def self.create(attributes)
     dog = self.new(attributes)
     dog.save
@@ -54,6 +57,7 @@ class Dog
     result = DB[:conn].execute(sql, name)
     result.size > 0 ? self.new_from_db(result.first) : nil
   end
+
 
   def self.new_from_db(row)
     dog = self.new(id:row[0], name:row[1], breed:row[2])
